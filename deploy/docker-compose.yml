@@ -1,0 +1,18 @@
+services:
+  paper:
+    build: ..
+    command: python quantbot.py --mode paper --db data/paper.db --port 8081 --host 0.0.0.0 --token ${QB_DASH_TOKEN}
+    env_file: ../.env
+    volumes: ["../data:/app/data", "../logs:/app/logs"]
+    restart: unless-stopped
+  live:
+    build: ..
+    command: python quantbot.py --mode live --db data/live.db --port 8082 --host 0.0.0.0 --venues binance --equity 500 --risk 0.25 --token ${QB_DASH_TOKEN}
+    env_file: ../.env
+    volumes: ["../data:/app/data", "../logs:/app/logs"]
+    restart: unless-stopped
+  advisor:
+    build: ..
+    command: python advisor.py --symbols BTC/USDT --every 15
+    env_file: ../.env
+    restart: unless-stopped

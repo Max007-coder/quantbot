@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+
+# runtime state and journals - never publish a book or a log
+data/
+logs/
+
+# demo captures
+*.webm

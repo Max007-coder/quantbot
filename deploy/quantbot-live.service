@@ -1,0 +1,15 @@
+[Unit]
+Description=quantbot live
+After=network-online.target
+
+[Service]
+Type=simple
+User=quant
+WorkingDirectory=/opt/quantbot
+EnvironmentFile=/opt/quantbot/.env
+ExecStart=/opt/quantbot/.venv/bin/python quantbot.py --mode live --db data/live.db --port 8082 --host 0.0.0.0 --venues binance --equity 500 --risk 0.25 --min-score 0.7
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

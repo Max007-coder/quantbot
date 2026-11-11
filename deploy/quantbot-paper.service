@@ -1,0 +1,15 @@
+[Unit]
+Description=quantbot paper
+After=network-online.target
+
+[Service]
+Type=simple
+User=quant
+WorkingDirectory=/opt/quantbot
+EnvironmentFile=/opt/quantbot/.env
+ExecStart=/opt/quantbot/.venv/bin/python quantbot.py --mode paper --db data/paper.db --port 8081 --host 0.0.0.0
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

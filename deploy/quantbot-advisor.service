@@ -1,0 +1,15 @@
+[Unit]
+Description=quantbot advisor
+After=network-online.target
+
+[Service]
+Type=simple
+User=quant
+WorkingDirectory=/opt/quantbot
+EnvironmentFile=/opt/quantbot/.env
+ExecStart=/opt/quantbot/.venv/bin/python advisor.py --symbols BTC/USDT,ETH/USDT --every 15
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
