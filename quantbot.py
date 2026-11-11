@@ -288,6 +288,13 @@ class BinanceBroker(Broker):
     venue = Venue.BINANCE
 
     def __init__(self, key: str, secret: str, testnet: bool):
+        # fail loudly and specifically: ccxt's own error here is a confusing
+        # futures URL from whatever host it happened to probe first
+        if not key or not secret:
+            raise RuntimeError(
+                "QB_BINANCE_KEY / QB_BINANCE_SECRET are empty - "
+                "add spot testnet keys from testnet.binance.vision" if testnet else
+                "QB_BINANCE_KEY / QB_BINANCE_SECRET are empty - add your mainnet keys")
         import ccxt  # noqa
         self.ex = ccxt.binance({"apiKey": key, "secret": secret,
                                 "enableRateLimit": True,
