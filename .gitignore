@@ -9,3 +9,6 @@ logs/
 
 # demo captures
 *.webm
+
+# nested lab repo, has its own git history
+recon-lab/
