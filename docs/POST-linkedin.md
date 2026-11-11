@@ -41,4 +41,6 @@ Paper first. Always.
 ## Attach
 
 - a screenshot of the dashboard (PAPER panel, equity curve, recent trades)
-- the repo link once it is pushed
+- the repo: https://github.com/Max007-coder/quantbot
+
+Code is up here: https://github.com/Max007-coder/quantbot
